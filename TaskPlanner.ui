@@ -186,6 +186,9 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="toolTip">
+          <string>ОК</string>
+         </property>
          <property name="styleSheet">
           <string notr="true">background-color: rgb(111, 200, 255)</string>
          </property>
@@ -201,6 +204,9 @@
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="toolTip">
+          <string>Отмена</string>
          </property>
          <property name="text">
           <string>Отмена</string>
@@ -434,7 +440,7 @@ background-color: rgb(172, 255, 157)</string>
          </property>
          <property name="icon">
           <iconset>
-           <normaloff>galochka.jpg</normaloff>galochka.jpg</iconset>
+           <normaloff>galochka.png</normaloff>galochka.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -547,7 +553,7 @@ background-color: rgb(193, 205, 255)</string>
          </property>
          <property name="icon">
           <iconset>
-           <normaloff>galochka.jpg</normaloff>galochka.jpg</iconset>
+           <normaloff>galochka.png</normaloff>galochka.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -579,6 +585,9 @@ background-color: rgb(193, 205, 255)</string>
            <italic>false</italic>
            <bold>false</bold>
           </font>
+         </property>
+         <property name="toolTip">
+          <string>Отчет выполненных задач</string>
          </property>
          <property name="styleSheet">
           <string notr="true">font: 9pt &quot;MV Boli&quot;;
@@ -694,7 +703,7 @@ background-color: rgb(170, 170, 255)</string>
            </font>
           </property>
           <property name="textAlignment">
-           <set>AlignCenter</set>
+           <set>AlignLeading|AlignVCenter</set>
           </property>
          </column>
         </widget>
@@ -706,6 +715,9 @@ background-color: rgb(170, 170, 255)</string>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="toolTip">
+          <string>Закрыть</string>
          </property>
          <property name="styleSheet">
           <string notr="true">color: rgb(255, 0, 0);</string>

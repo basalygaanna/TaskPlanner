@@ -519,7 +519,8 @@ class MyWidget(QMainWindow):
             start = dt.datetime.strptime(self.start_done_task.text(), self.my_format)
             finish = dt.datetime.strptime(self.finish_done_task.text(), self.my_format)
             tasks = self.cur.execute(
-                '''SELECT tr.theme, tm.time_done FROM tree as tr, time as tm WHERE tr.id = tm.task_id AND tm.time_done >= ? AND tm.time_done <= ?''',
+                '''SELECT tr.theme, tm.time_done FROM tree as tr, time as tm WHERE 
+                tr.id = tm.task_id AND tm.time_done >= ? AND tm.time_done <= ?''',
                 (start, finish)).fetchall()
             self.done_tasks_table.setRowCount(0)
             for i, task in enumerate(tasks):
@@ -596,9 +597,6 @@ class MyWidget(QMainWindow):
             if self.sender().text() == 'ОК':
                 self.frame1.show()
                 self.frame2.hide()
-                print(self.name_frame2.text(), self.start_frame2.text(), self.finish_frame2.text(),
-                      self.description_frame2.toPlainText())
-                print(self.current_task)
                 self.current_task.setText(0, self.name_frame2.text())
                 self.current_task.setText(1, self.start_frame2.text())
                 self.current_task.setText(2, self.finish_frame2.text())
@@ -637,14 +635,14 @@ class MyWidget(QMainWindow):
                     child.setText(0, 'Новый подэлемент')
                     child.setText(1, dt.datetime.strftime(start, self.my_format))
                     child.setText(2, dt.datetime.strftime(finish, self.my_format))
-                    query = self.cur.execute('''INSERT INTO tree(theme, start, finish, parent_id, status) 
-                        VALUES(?, ?, ?, ?, ?);''', (
+                    query = self.cur.execute('''INSERT INTO tree(theme, start, finish, parent_id, 
+                        status) VALUES(?, ?, ?, ?, ?);''', (
                         child.text(0), start, finish, int(parent.text(3)), False))
                     child.setText(3, str(query.lastrowid))
                     self.conn.commit()
                     self.show_frame2(child)
             except Exception as err:
-                print('Выберете задачу')
+                print(err)
         elif self.sender().text() == 'Новая задача':
             root = QTreeWidgetItem(self.treeWidget)
             root.setText(0, 'Новая задача')
@@ -739,7 +737,6 @@ class MyWidget(QMainWindow):
         подошла ни под одно условие). Запускается рекурсивная функция add_children от id задачи и ее
         родителя. Запускается таймер на 1 минуту (в миллисекундах).
         """
-        print('task_status_update')
         try:
             self.task_structure = {}
             tasks = self.cur.execute('''SELECT * FROM tree''').fetchall()
@@ -842,7 +839,7 @@ class MyWidget(QMainWindow):
                 else:
                     self.treeWidget.takeTopLevelItem(self.treeWidget.indexOfTopLevelItem(task))
         except Exception as err:
-            print('delete', err)
+            print(err)
 
     def create_database(self):
         """
